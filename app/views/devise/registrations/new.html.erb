@@ -1,0 +1,74 @@
+<div class="container-sm">
+  <div class="row">
+    <h2 class="display-2 top">新規登録</h2>
+
+    <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+      <%= render "devise/shared/error_messages", resource: f.object %>
+
+      <div class="field mb-3 width">
+        <%= f.label :nickname, 'ニックネーム',class:"form-label"%><br />
+        <%= f.text_field :nickname, autofocus: true, class:"form-control", id:"exampleInputEmail1", placeholder:"ニックネームを決めてください", maxlength: "30"%>
+      </div>
+
+
+      <div class="row width">
+        <p class="mt-2 mb-2">お名前</p>
+        <div class="col">
+          <%= f.label :jp_first_name, '姓'%>
+          <%= f.text_field :jp_first_name, class:"form-control", placeholder:"姓", maxlength: "10"%>
+        </div>
+        <div class="col">
+          <%= f.label :jp_last_name, '名'%>
+          <%= f.text_field :jp_last_name, class:"form-control", placeholder:"名", maxlength: "10"%>
+        </div>
+      </div>
+
+
+      <div class="row width">
+        <p class="mt-3 mb-1">フリガナ</p>
+        <div class="col">
+          <%= f.label :jp_kana_first_name, 'セイ'%>
+          <%= f.text_field :jp_kana_first_name, class:"form-control", placeholder:"セイ", maxlength: "20"%>
+        </div>
+        <div class="col">
+          <%= f.label :jp_kana_last_name, 'メイ'%>
+          <%= f.text_field :jp_kana_last_name, class:"form-control", placeholder:"メイ", maxlength: "20" %>
+        </div>
+      </div>
+
+      <div class="field mb-3 width">
+        <%= f.label :email, class:"form-label"%><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"exampleInputEmail1", placeholder:"Emailを入力してください"%>
+      </div>
+
+      <div class="field mb-3 width">
+        <%= f.label :password, class:"form-label" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上入力して下さい)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"exmpleFormControlInput1", placeholder:"パスワードを入力してください" %>
+      </div>
+
+      <div class="field width">
+        <%= f.label :password_confirmation, class:"form-label" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", id:"ecmpleFormControlInput1", placeholder: "同じパスワードを入力してください" %>
+      </div>
+
+      <div class="input-group mt-3 width">
+        <%= f.label :profile, 'プロフィール',class:"input-group-text"%>
+        <%= f.text_area :profile, class:"form-control", placeholder:"自己紹介をお好きなようにお書きください", maxlength: "1000"%>
+      </div>
+      <div class="row g-3">
+        <%= f.label :birthday, '誕生日', class:"h4"%>
+        <div class="col-sm side">
+          <%= raw sprintf(f.date_select( :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1992,1,1),date_separator: '%s'), "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+        </div>
+      </div>
+      <div class="actions mt-3">
+        <%= f.submit "新規登録", class:"btn btn-primary mb-3"%>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
