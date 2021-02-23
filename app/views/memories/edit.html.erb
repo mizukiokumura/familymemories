@@ -1,0 +1,39 @@
+<%= render "shared/header" %>
+<div class="container">
+  <div class="row">
+    <h1>Memoryを編集する</h1>
+    <%= form_with model: @memory, url: memory_path, method: :patch,local: true do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+    <div class="mb-3 w-5">
+      <%= f.label :title, 'タイトル', class:"form-label"%>
+      <%= f.text_field :title, class:"form-control", placeholder:"タイトルを入力して下さい。例）〇〇への旅行へ行ってきた！"%>
+    </div>
+    <div class="mb-3 w-5">
+      <%= f.label :diary, 'Memory', class:"form-label"%>
+      <%= f.text_area :diary, class:"form-control", placeholder:"詳細に思い出を記録しちゃいましょう！例）今日はみんなと一緒に〇〇へ行ってきた！"%>
+    </div>
+    <div class="mb-3">
+      <%= f.label :image, "写真や画像", class:"form-label", for:"formFile"%>
+      <p>記念に撮った写真を保存しよう！</p>
+    </div>
+    <div class="mb-3 w-5">
+      <%= f.file_field :image, class:"form-control", type:"file", id:"formFile"%>
+    </div>
+    <div class="row g-3 py-2 mb-2">
+      <%= f.label :memory, "MemoryDay",class:"form-label"%>
+    </div>
+    <div class="col-sm side">
+      <%= raw sprintf(f.date_select(:memory, use_month_numbers: true, start_year: 1930, end_year: Time.now.year, pronpt:"--",date_separator: '%s'), "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    </div>
+    <div class="d-f">
+      <div class="d-c">
+        <%= f.submit "編集する" ,class:"btn btn-success" %>
+      </div>
+      <div class="d-c">
+        <%=link_to 'もどる', root_path, class:"btn btn-info" %>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>
+<%= render "shared/footer"%>

@@ -1,3 +1,4 @@
+<%= render "shared/header" %>
 <div class="container-sm">
   <div class="row">
     <h2 class="display-2 top">新規登録</h2>
@@ -42,7 +43,7 @@
       </div>
 
       <div class="field mb-3 width">
-        <%= f.label :password, class:"form-label" %>
+        <%= f.label :password, 'パスワードを入力して下さい', class:"form-label" %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> 文字以上入力して下さい)</em>
         <% end %><br />
@@ -50,7 +51,7 @@
       </div>
 
       <div class="field width">
-        <%= f.label :password_confirmation, class:"form-label" %><br />
+        <%= f.label :password_confirmation, '確認の為に再度同じパスワードを入力して下さい',class:"form-label" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", id:"ecmpleFormControlInput1", placeholder: "同じパスワードを入力してください" %>
       </div>
 
@@ -59,7 +60,7 @@
         <%= f.text_area :profile, class:"form-control", placeholder:"自己紹介をお好きなようにお書きください", maxlength: "1000"%>
       </div>
       <div class="row g-3">
-        <%= f.label :birthday, '誕生日', class:"h4"%>
+        <%= f.label :birthday, '誕生日を入力して下さい', class:"h4"%>
         <div class="col-sm side">
           <%= raw sprintf(f.date_select( :birthday, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1992,1,1),date_separator: '%s'), "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
         </div>
@@ -72,3 +73,4 @@
     <%= render "devise/shared/links" %>
   </div>
 </div>
+<%= render "shared/footer"%>
