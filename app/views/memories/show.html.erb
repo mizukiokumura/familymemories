@@ -1,0 +1,10 @@
+<%= render "shared/header" %>
+<div class="card mb-3">
+    <%= image_tag @memory.image.variant(resize: '1080x1020'), class:"img-fluid"%>
+  <div class="card-body">
+    <h5 class="card-title"><%=  @memory.title %></h5>
+    <p class="card-text"><%= @memory.diary%></p>
+    <p class="card-text"><small class="text-muted">作成日<%= @memory.memory%></small></p>
+  </div>
+</div>
+<%= render "shared/footer" %>
