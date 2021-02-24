@@ -10,6 +10,8 @@ class MemoriesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @memory.comments.includes(:user).order(id: "DESC")
   end
 
   def create
