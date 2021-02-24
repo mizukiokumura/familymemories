@@ -20,7 +20,10 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">FamilyMemories</h1>
-        <%= image_tag "kazoku.jpg", class:"img-fluid", alt:"家族の画像"%>
+          <%# 不都合が起きた時の予備として残してあります%>
+          <%# image_tag "kazoku.jpg", class:"img-fluid", alt:"家族の画像"%>
+          <%#/%>
+        <%= video_tag("/videos/top_page.mp4", :autoplay => true, :loop => true, :muted => true, class:"image-fluid", size:"400x400")%>
         <p class="lead text-muted">今日はどんな事があったかな？楽しい事、嬉しかった事、悲しかった事、落ち込んだ事、今起こった事全部を思い出として大切に記録してしまいましょう！</p>
         <p>
           <a href="/memories/new" class="btn btn-primary my-2">NewMemoryCreate</a>

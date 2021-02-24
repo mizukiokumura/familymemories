@@ -2,7 +2,7 @@ class MemoriesController < ApplicationController
   before_action :authenticate_user!,   only: [:edit, :new, :destroy, :update]
   before_action :set_memory,           only: [:show, :edit, :update, :destroy]
   def index
-    @memories = Memory.includes(:user).order(id: "DESC").limit(4)
+    @memories = Memory.includes(:user).order(id: "DESC").limit(3)
   end
 
   def new
