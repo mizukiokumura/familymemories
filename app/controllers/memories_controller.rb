@@ -42,9 +42,13 @@ class MemoriesController < ApplicationController
     end
   end
 
+  def search
+    @memories = Memory.search(params[:keyword])
+  end
+
   private
   def memory_params
-    params.require(:memory).permit(:title, :memory, :image, :diary).merge(user_id: current_user.id)
+    params.require(:memory).permit(:title, :memory, :diary, images: []).merge(user_id: current_user.id)
   end
 
   def set_memory

@@ -13,11 +13,11 @@
       <%= f.text_area :diary, class:"form-control", placeholder:"詳細に思い出を記録しちゃいましょう！例）今日はみんなと一緒に〇〇へ行ってきた！"%>
     </div>
     <div class="mb-3">
-      <%= f.label :image, "写真や画像", class:"form-label", for:"formFile"%>
+      <%= f.label :images, "写真や画像", class:"form-label", for:"formFile"%>
       <p>記念に撮った写真を保存しよう！</p>
     </div>
     <div class="mb-3 w-5">
-      <%= f.file_field :image, class:"form-control", type:"file", id:"formFile"%>
+      <%= f.file_field :images, class:"form-control", type:"file", id:"formFile"%>
     </div>
     <div class="row g-3 py-2 mb-2">
       <%= f.label :memory, "MemoryDay",class:"form-label"%>

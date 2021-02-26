@@ -15,41 +15,45 @@
 </style>
 <%= render "shared/header" %>
 <main>
-
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">FamilyMemories</h1>
-          <%# 不都合が起きた時の予備として残してあります%>
-          <%# image_tag "kazoku.jpg", class:"img-fluid", alt:"家族の画像"%>
-          <%#/%>
         <%= video_tag("/videos/top_page.mp4", :autoplay => true, :loop => true, :muted => true, class:"image-fluid", size:"400x400")%>
-        <p class="lead text-muted">今日はどんな事があったかな？楽しい事、嬉しかった事、悲しかった事、落ち込んだ事、今起こった事全部を思い出として大切に記録してしまいましょう！</p>
+        <h1 class="fw-light">FamilyMemories</h1>
+        <p class="lead text-muted">今日はどんな事があったかな？楽しい事、嬉しかった事、悲しかった事、落ち込んだ事、今起こった事全部を思い出として、大切に記録してしまいましょう！</p>
         <p>
           <a href="/memories/new" class="btn btn-primary my-2">NewMemoryCreate</a>
         </p>
       </div>
     </div>
+
   </section>
-  <% @memories.each do |memory| %>
-    <div class="side">
-      <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="card" style="width: 18rem;">
-              <%= image_tag memory.image, size: '200x200', class:"card-img-top"%>
-              <div class="card-body">
-              <h5 class="card-title"><%= memory.title%></h5>
-              <p class="card-text"><%= memory.diary%></p>
-              <%= link_to '詳細ページへ', memory_path(memory.id), class:"btn btn-primary"%>
-              <%if user_signed_in? && current_user.id == memory.user.id %>
-                <%= link_to '編集', edit_memory_path(memory.id), class:"btn btn-info"%>
-                <%= link_to '削除', memory_path(memory.id), method: :delete, class:"btn btn-info"%>
-              <% end %>
+   <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @memories.each do |memory| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= image_tag memory.images.first,class:"bd-placeholder-img card-img-top", width:"100", height:"225" %>   
+            <div class="card-body">
+              <p class="card-text">タイトル「<%= memory.title%>」</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to '詳細', memory_path(memory.id), class:"btn btn-sm btn-outline-secondary"%>
+                <% if user_signed_in? && current_user.id == memory.user.id %>
+                  <%= link_to '編集', edit_memory_path(memory.id), class:"btn btn-sm btn-outline-secondary"%>
+                  <%= link_to '削除', memory_path(memory.id), method: :delete, class:"btn btn-sm btn-outline-secondary"%>
+                <% end %>
+                </div>
+                <small class="text-muted">作成日<%= memory.memory %></small>
+              </div>
             </div>
+          </div>
         </div>
+        <% end %>
       </div>
     </div>
-  <%end%>
+  </div>
 </main>
 <%= render "shared/footer" %>
 <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
