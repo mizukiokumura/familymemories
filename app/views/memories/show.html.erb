@@ -1,6 +1,10 @@
 <%= render "shared/header" %>
 <div class="card mb-3">
-    <%= image_tag @memory.image.variant(resize: '1080x1020'), class:"img-fluid"%>
+    <% @memory.images.each do |image|%>
+    <div class="cild">
+      <%= image_tag image, class:"img-fluid", height:"50%", width:"50%"%>
+    </div>
+    <%end%>
   <div class="card-body">
     <h5 class="card-title"><%=  @memory.title %></h5>
     <p class="card-text"><%= @memory.diary%></p>
@@ -11,8 +15,8 @@
   <div class="input-group mb-3">
   <% if user_signed_in? %>
     <%= form_with(model: [@memory, @comment], local: true) do |form| %>
-      <%= form.text_field :comment, placeholder: "コメントする", rows: "2", class:"form-control" %>
-      <%= form.submit "投稿する", class:"btn btn-outline-secondary"%>
+      <%= form.text_field :comment, placeholder: "コメントを記入する", rows: "2", class:"form-control" %>
+      <%= form.submit "投稿", class:"btn btn-outline-secondary"%>
     <% end %>
   <% else %>
     <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
@@ -21,7 +25,7 @@
   <div class="comments">
     <h4 class="col-sm-3">＜コメント一覧＞</h4>
     <% @comments.each do |c| %>
-      <p>
+      <p class="alert alert-warning">
         <strong><%=c.user.nickname %>：</strong>
         <%= c.comment %>
       </p>

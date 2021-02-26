@@ -5,7 +5,7 @@ FactoryBot.define do
     diary { 'hogehogehugahugahogehuga'}
     association :user
     after(:build) do |memory|
-      memory.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+      memory.images.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
     end
   end
 end
