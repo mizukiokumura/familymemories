@@ -1,6 +1,6 @@
 class Memory < ApplicationRecord
   belongs_to :user
-  has_many :comments
+  has_many :comments,   dependent: :destroy
   has_many_attached :images
   validate :images_length, :images_size
   with_options presence: true do
