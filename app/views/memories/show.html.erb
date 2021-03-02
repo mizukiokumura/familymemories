@@ -1,9 +1,15 @@
 <%= render "shared/header" %>
 <div class="card mb-3">
     <% @memory.images.each do |image|%>
-    <div class="cild">
-      <%= image_tag image, class:"img-fluid", height:"50%", width:"50%"%>
-    </div>
+      <%if image.byte_size <= 5.megabytes%>
+        <div class="cild">
+          <%= image_tag image, class:"img-fluid", height:"50%", width:"50%"%> 
+        </div>
+      <%else%>
+        <div class="cild">
+          <%= video_tag(url_for(image), :autoplay => true, :loop => true, :muted => true,class:"img-fluid") %>
+        </div>
+      <%end%>
     <%end%>
   <div class="card-body">
     <h5 class="card-title"><%=  @memory.title %></h5>
