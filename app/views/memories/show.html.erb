@@ -1,9 +1,15 @@
 <%= render "shared/header" %>
 <div class="card mb-3">
     <% @memory.images.each do |image|%>
-    <div class="cild">
-      <%= image_tag image, class:"img-fluid", height:"50%", width:"50%"%>
-    </div>
+      <%if image.byte_size <= 5.megabytes%>
+        <div class="cild">
+          <%= image_tag image, class:"img-fluid", height:"50%", width:"50%"%> 
+        </div>
+      <%else%>
+        <div class="cild">
+          <%= video_tag(url_for(image), :autoplay => true, :loop => true, :muted => true,class:"img-fluid") %>
+        </div>
+      <%end%>
     <%end%>
   <div class="card-body">
     <h5 class="card-title"><%=  @memory.title %></h5>
@@ -14,9 +20,9 @@
 <div class="containers">
   <div class="input-group mb-3">
   <% if user_signed_in? %>
-    <%= form_with(model: [@memory, @comment], local: true) do |form| %>
+    <%= form_with(model: [@memory, @comment],id:"new_comment")  do |form| %>
       <%= form.text_field :comment, placeholder: "コメントを記入する", rows: "2", class:"form-control" %>
-      <%= form.submit "投稿", class:"btn btn-outline-secondary"%>
+      <%= form.submit "投稿", class:"btn btn-outline-secondary" %>
     <% end %>
   <% else %>
     <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
@@ -24,12 +30,14 @@
   </div>
   <div class="comments">
     <h4 class="col-sm-3">＜コメント一覧＞</h4>
-    <% @comments.each do |c| %>
-      <p class="alert alert-warning">
-        <strong><%=c.user.nickname %>：</strong>
-        <%= c.comment %>
-      </p>
-    <% end %>
-  </div>
+      <div class="comment">
+        <% @comments.each do |comment| %> 
+        <p class="alert alert-warning">
+          <strong><%= comment.user.nickname%>:</strong>
+          <%=comment.comment %> 
+        </p>
+        <%end%> 
+      </div>
+  </div>  
 </div>
 <%= render "shared/footer" %>

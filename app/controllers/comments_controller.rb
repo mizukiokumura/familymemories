@@ -1,7 +1,15 @@
 class CommentsController < ApplicationController
   def create
-    if @comment = Comment.create(comment_params)
-      redirect_to memory_path(@comment.memory.id)
+     @memory = Memory.find(params[:memory_id])
+     @comment = @memory.comments.build(comment_params)
+     @comment = Comment.new(comment_params)
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to memory_path(@memory)}
+        format.json
+      end
+    else
+      render memory_path(@memory.id)
     end
   end
 

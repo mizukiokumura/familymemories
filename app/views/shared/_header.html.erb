@@ -14,17 +14,16 @@
             <li><%= link_to "ユーザー編集", edit_user_registration_path, class:"btn btn-info" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-secondary"%></li>
           <%else%>
-            <li><a href="/users/sign_up" class="text-white">新規登録</a></li>
-            <li><a href="/users/sign_in" class="text-white">ログイン</a></li>
+            <li><a href="/users/sign_up" class="text-white btn btn-success mb-1">新規登録</a></li>
+            <li><a href="/users/sign_in" class="text-white btn btn-info">ログイン</a></li>
           <%end%>
           </ul>
-          <%= form_with(url: search_memories_path, local: true, method: :get, class: "row g-3") do |form| %>
+          <%= form_with(url: search_memories_path, local: true, method: :get, class: "row g-2") do |form| %>
             <div class="col-auto">
-              <%# <label for="inputPassword2" class="visually-hidden">Password</label> %>
               <%= form.text_field :keyword, placeholder: "投稿を検索する", class: "form-control" %>
             </div>
             <div class="col-auto">
-              <%= form.submit "検索", class:"btn btn-primary mb-3" %>
+              <%= form.submit "検索", class:"btn btn-primary mb-1" %>
             </div>
           <% end %>
         </div>
