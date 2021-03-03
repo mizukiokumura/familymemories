@@ -14,7 +14,7 @@
     </div>
     <div class="mb-3">
       <%= f.label :images, "写真や画像", class:"form-label badge bg-primary text-wrap", for:"formFile"%>
-      <p>記念に撮った写真や動画を保存しよう！(動画は30MB以内で写真4枚まで)</p>
+      <p>記念に撮った写真や動画を保存しよう！(動画は30MB以内、画像であれば4枚まで)</p>
     </div>
     <div class="mb-3 w-5">
       <%= f.file_field :images, multiple: true, class:"form-control", type:"file", id:"formFile" %>
