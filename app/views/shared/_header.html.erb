@@ -14,8 +14,8 @@
             <li><%= link_to "ユーザー編集", edit_user_registration_path, class:"btn btn-info" %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-secondary"%></li>
           <%else%>
-            <li><a href="/users/sign_up" class="text-white btn btn-success mb-1">新規登録</a></li>
-            <li><a href="/users/sign_in" class="text-white btn btn-info">ログイン</a></li>
+            <li><%= link_to "新規登録", new_user_registration_path, class:"text-white btn btn-success mb-1"%></li>
+            <li><%= link_to "ログイン", new_user_session_path, class:"text-white btn btn-info"%></li>
           <%end%>
           </ul>
           <%= form_with(url: search_memories_path, local: true, method: :get, class: "row g-2") do |form| %>
