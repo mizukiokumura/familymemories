@@ -41,7 +41,7 @@
               <% end %>
               <% if image.byte_size >= 5.megabytes %>
                 <%= image_tag(image.preview(resize:"225x100>"), class:"bd-pleceholder-img card-img-top", width:"100", height:"225") %>
-              <%else%> 
+              <%else%>
                 <%= image_tag image,class:"bd-placeholder-img card-img-top", width:"100", height:"225" %>
               <%end%>
               <% count += 1%>
