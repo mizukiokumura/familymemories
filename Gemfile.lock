@@ -132,6 +132,7 @@ GEM
     mini_portile2 (2.5.0)
     minitest (5.14.3)
     msgpack (1.4.2)
+    multi_json (1.15.0)
     mysql2 (0.5.3)
     nio4r (2.5.5)
     nokogiri (1.11.1)
@@ -245,6 +246,8 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    streamio-ffmpeg (3.0.2)
+      multi_json (~> 1.8)
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -302,6 +305,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
+  streamio-ffmpeg (~> 3.0, >= 3.0.2)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
