@@ -9,7 +9,7 @@
       <%= f.text_field :title, class:"form-control", placeholder:"タイトルを入力して下さい。例）〇〇への旅行へ行ってきた！"%>
     </div>
     <div class="mb-3 w-5">
-      <%= f.label :diary, 'Memory', class:"badge bg-primary text-wrap"%>
+      <%= f.label :diary, 'Diary', class:"badge bg-primary text-wrap"%>
       <%= f.text_area :diary, class:"form-control", placeholder:"詳細に思い出を記録しちゃいましょう！例）今日はみんなと一緒に〇〇へ行ってきた！"%>
     </div>
     <div class="mb-3">
@@ -24,7 +24,7 @@
     </div>
     <p>思い出の日を記録しましょう!</p>
     <div class="col-sm side">
-      <%= raw sprintf(f.date_select(:memory, use_month_numbers: true, start_year: 1930, end_year: Time.now.year, pronpt:"--",date_separator: '%s'), "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      <%= raw sprintf(f.date_select(:memory, use_month_numbers: true, start_year: 1980, end_year: Time.now.year, prompt: '--',date_separator: '%s'), "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
     </div>
     <div class="d-f">
       <div class="d-c">
